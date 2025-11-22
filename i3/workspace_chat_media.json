@@ -1,0 +1,25 @@
+// vim:ts=4:sw=4:et
+{
+    "percent": 0.5,
+    "swallows": [
+       {
+       	"class": "^Google\\-chrome$",
+        "instance": "^google\\-chrome$",
+        "window_role": "^browser$"
+       }
+    ],
+    "type": "con"
+}
+
+{
+    "percent": 0.5,
+    "swallows": [
+       {
+        "class": "^discord$",
+        "instance": "^discord$",
+        "window_role": "^browser\\-window$"
+       }
+    ],
+    "type": "con"
+}
+

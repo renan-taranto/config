@@ -1,0 +1,12 @@
+// vim:ts=4:sw=4:et
+{
+    "percent": 1,
+    "swallows": [
+       {
+        "class": "^jetbrains\\-phpstorm$",
+        "instance": "^jetbrains\\-phpstorm$"
+       }
+    ],
+    "type": "con"
+}
+

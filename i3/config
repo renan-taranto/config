@@ -114,16 +114,45 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
+set $ws1 "1: Terminals"
+set $ws2 "2: IDE"
+set $ws3 "3: Web"
+set $ws4 "4: Chat/Media"
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
+
+set $main_screen "DVI-D-0"
+set $secondary_screen "HDMI-0"
+
+workspace $ws1 output $main_screen
+workspace $ws2 output $main_screen
+workspace $ws3 output $secondary_screen
+workspace $ws4 output $secondary_screen
+
+# assigns
+assign [class="jetbrains-phpstorm"] $ws2
+assign [class="discord"] $ws4
+
+# Autostart #
+# `exec` order is important to keep the main workspaces focused after startup on both monitors. #
+## workspace 4
+exec --no-startup-id i3-msg "workspace $ws4; append_layout ~/.config/i3/workspace_chat_media.json"
+exec --no-startup-id google-chrome
+exec --no-startup-id discord
+## workspace 2
+exec --no-startup-id i3-msg "workspace $ws2; append_layout ~/.config/i3/workspace_ide.json"
+exec --no-startup-id PhpStorm
+## workspace 3 (will be focused on secondary monitor)
+exec --no-startup-id i3-msg "workspace $ws3; append_layout ~/.config/i3/workspace_web.json"
+exec --no-startup-id google-chrome
+## workspace 1 (will be focused on primary monitor)
+exec --no-startup-id i3-msg "workspace $ws1; append_layout ~/.config/i3/workspace_terminals.json"
+exec --no-startup-id kitty
+exec --no-startup-id kitty
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
